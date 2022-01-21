@@ -1,0 +1,13 @@
+{
+  "command.getContract.title": "获取合约代码",
+  "command.configApi.title": "配置 API",
+  "menu.configApi.eth.description": "配置 ETH API",
+  "ext.contract.eth.title": "以太坊合约",
+  "ext.input.hint.address": "请输入合约地址",
+  "err.invalidApi": "无效的 API",
+  "err.contract.getinfo.failed": "获取合约信息失败",
+  "tip.contract.selectfolder": "选择文件夹",
+  "tip.contract.getinfo": "正在获取合约信息",
+  "tip.contract.savetofile": "正在保存合约",
+  "tip.contract.savetofile.sucess": "保存合约成功"
+}

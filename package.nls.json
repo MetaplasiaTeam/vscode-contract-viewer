@@ -1,0 +1,13 @@
+{
+  "command.getContract.title": "Get the contract code",
+  "command.configApi.title": "Config API",
+  "menu.configApi.eth.description": "Config API for Ethereum",
+  "ext.contract.eth.title": "Ethereum Contract",
+  "ext.input.hint.address": "Enter the address of the contract",
+  "err.invalidApi": "Invalid API",
+  "err.contract.getinfo.failed": "Failed to get contract information",
+  "tip.contract.selectfolder": "Select a folder to save the contract code",
+  "tip.contract.getinfo": "Get the contract information",
+  "tip.contract.savetofile": "Save the contract code to file",
+  "tip.contract.savetofile.sucess": "Save the contract code to file successfully"
+}
