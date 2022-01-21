@@ -1,9 +1,7 @@
 import * as vscode from "vscode";
 import { registerCommand } from "./utils/vscode-api";
 import { ConfigApi } from "./command/config-api";
-import { showInformationMessage, status } from "./utils/toast";
-import axios from "axios";
-import Container, { Service } from "typedi";
+import Container from "typedi";
 import { Localize } from "./common/Localize";
 import { Config } from "./core/config";
 import { ContractParser } from "./common/ContractParser";

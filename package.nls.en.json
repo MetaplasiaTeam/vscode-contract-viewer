@@ -1,5 +1,5 @@
 {
-  "command.getContract.title": "Get the contract code",
+  "command.getContract.title": "Get contract code",
   "command.configApi.title": "Config API",
   "menu.configApi.eth.description": "Config API for Ethereum",
   "ext.contract.eth.title": "Ethereum Contract",

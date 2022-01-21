@@ -5,8 +5,14 @@
   "description": "Contract Viewer",
   "version": "0.0.1",
   "publisher": "MetaPlasia",
+  "author": {
+    "name": "MetaPlasia",
+    "email": "metaplasiaio@gmail.com",
+    "url": "https://metaplasia.io"
+  },
+  "icon": "image/logo.png",
   "engines": {
-    "vscode": "^1.63.0"
+    "vscode": "^1.37.0"
   },
   "categories": [
     "Other"
@@ -14,7 +20,7 @@
   "activationEvents": [
     "*"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
