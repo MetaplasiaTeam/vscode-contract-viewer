@@ -4,11 +4,20 @@
   "displayName": "Contract Viewer",
   "description": "Contract Viewer",
   "version": "0.0.1",
-  "publisher": "MetaPlasia",
+  "publisher": "Metaplasia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaplasiaTeam/vscode-contract-viewer"
+  },
   "author": {
-    "name": "MetaPlasia",
+    "name": "Metaplasia",
     "email": "metaplasiaio@gmail.com",
     "url": "https://metaplasia.io"
+  },
+  "homepage": "https://github.com/MetaplasiaTeam/vscode-contract-viewer",
+  "bugs": {
+    "url": "https://github.com/MetaplasiaTeam/vscode-contract-viewer/issues",
+    "email": "metaplasiaio@gmail.com"
   },
   "icon": "image/logo.png",
   "engines": {
@@ -16,6 +25,14 @@
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "solidity",
+    "contract",
+    "viewer",
+    "ethereum",
+    "blockchain",
+    "eth"
   ],
   "activationEvents": [
     "*"
@@ -62,7 +79,7 @@
     "@types/glob": "^7.2.0",
     "@types/mocha": "^9.0.0",
     "@types/node": "14.x",
-    "@types/vscode": "^1.63.0",
+    "@types/vscode": "^1.37.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "@vscode/test-electron": "^2.0.3",
