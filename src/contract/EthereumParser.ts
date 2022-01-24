@@ -14,6 +14,7 @@ import {
 import { objectToMap } from "./json";
 import { fileDialogOptions } from "../utils/vscode-api";
 import { EOL } from "os";
+import { IParser } from "../common/IParser";
 
 export class EthereumParser implements IParser {
   private output = Container.get(OutPut);
@@ -25,8 +26,9 @@ export class EthereumParser implements IParser {
       showInformationMessage(this.i18n.localize("err.invalidApi"));
       return;
     }
-    this.output.append("当前 api: " + api);
-    this.output.append("当前地址: " + addr);
+    this.output.appendLine("当前 api: " + api);
+    this.output.appendLine("当前地址: " + addr);
+    this.output.appendLine("类型: Ethereum");
     showSpinner(this.i18n.localize("tip.contract.getinfo"));
     axios
       .get("https://api.etherscan.io/api", {
@@ -75,6 +77,7 @@ export class EthereumParser implements IParser {
       })
       .catch((err) => {
         clearSpinner();
+        this.output.appendLine(err.message);
         showInformationMessage(
           this.i18n.localize("err.contract.getinfo.failed")
         );

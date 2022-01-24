@@ -3,6 +3,7 @@
   "command.configApi.title": "配置 API",
   "menu.configApi.eth.description": "配置 ETH API",
   "ext.contract.eth.title": "以太坊合约",
+  "ext.contract.bsc.title": "BSC 合约",
   "ext.input.hint.address": "请输入合约地址",
   "err.invalidApi": "无效的 API",
   "err.contract.getinfo.failed": "获取合约信息失败",

@@ -3,6 +3,7 @@
   "command.configApi.title": "Config API",
   "menu.configApi.eth.description": "Config API for Ethereum",
   "ext.contract.eth.title": "Ethereum Contract",
+  "ext.contract.bsc.title": "Binance Smart Chain",
   "ext.input.hint.address": "Enter the address of the contract",
   "err.invalidApi": "Invalid API",
   "err.contract.getinfo.failed": "Failed to get contract information",

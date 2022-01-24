@@ -1,3 +1,3 @@
-interface IParser {
+export interface IParser {
   parse(addr: string): void;
 }
