@@ -10,4 +10,4 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/docs/**
-node_modules
+node_modules/**
