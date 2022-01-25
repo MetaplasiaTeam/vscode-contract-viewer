@@ -3,7 +3,7 @@
   "name": "contract-viewer",
   "displayName": "Contract Viewer",
   "description": "Contract Viewer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Metaplasia",
   "repository": {
     "type": "git",
@@ -58,6 +58,11 @@
         "contract-viewer.setting.api.eth": {
           "type": "string",
           "description": "Ethereum API",
+          "default": ""
+        },
+        "contract-viewer.setting.api.bsc": {
+          "type": "string",
+          "description": "Binance API",
           "default": ""
         }
       }

@@ -39,14 +39,12 @@ export abstract class BaseParser {
 
   protected abstract parse(api: string, addr: string): void;
 
-  protected async selectFolder(): Promise<vscode.Uri[] | undefined> {
+  protected async selectFolder(callback: Function) {
     let fileUri = await vscode.window.showOpenDialog(
       fileDialogOptions(this.i18n.localize("tip.contract.selectfolder"))
     );
     if (fileUri && fileUri[0]) {
-      return fileUri;
-    } else {
-      return undefined;
+      callback.call(this, fileUri[0].fsPath);
     }
   }
 
@@ -54,5 +52,12 @@ export abstract class BaseParser {
     clearSpinner();
     this.output.appendLine(err.message);
     showInformationMessage(this.i18n.localize("err.contract.getinfo.failed"));
+  }
+
+  protected saveSuccess() {
+    showInformationMessage(
+      this.i18n.localize("tip.contract.savetofile.sucess")
+    );
+    clearSpinner();
   }
 }

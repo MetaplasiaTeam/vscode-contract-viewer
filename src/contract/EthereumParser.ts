@@ -1,35 +1,21 @@
-import * as vscode from "vscode";
+import axios from "axios";
 import * as shell from "shelljs";
 import * as fs from "fs";
-import axios from "axios";
-import Container from "typedi";
-import { ConfigApi } from "../command/config-api";
-import { Localize } from "../common/Localize";
-import { OutPut } from "../common/Output";
-import {
-  clearSpinner,
-  showInformationMessage,
-  showSpinner,
-} from "../utils/toast";
+import { BaseParser } from "../common/BaseParser";
 import { objectToMap } from "./json";
-import { fileDialogOptions } from "../utils/vscode-api";
+import { showInformationMessage, clearSpinner } from "../utils/toast";
 import { EOL } from "os";
-import { IParser } from "../common/IParser";
 
-export class EthereumParser implements IParser {
-  private output = Container.get(OutPut);
-  private i18n = Container.get(Localize);
+export class EthereumParser extends BaseParser {
+  initApiKey(): string {
+    return "contract-viewer.setting.api.eth";
+  }
 
-  parse(addr: string): void {
-    let api = ConfigApi.read("contract-viewer.setting.api.eth");
-    if (api === null || api === undefined || api === "") {
-      showInformationMessage(this.i18n.localize("err.invalidApi"));
-      return;
-    }
-    this.output.appendLine("当前 api: " + api);
-    this.output.appendLine("当前地址: " + addr);
-    this.output.appendLine("类型: Ethereum");
-    showSpinner(this.i18n.localize("tip.contract.getinfo"));
+  constructor(addr: string) {
+    super(addr);
+  }
+
+  parse(api: string, addr: string): void {
     axios
       .get("https://api.etherscan.io/api", {
         params: {
@@ -40,47 +26,40 @@ export class EthereumParser implements IParser {
         },
       })
       .then((res) => {
-        res.data.result.forEach((element: any) => {
-          // 我不知道为什么的他外面还有一层括号，所以我先用正则去掉了
-          let codes = JSON.parse(
-            element.SourceCode.replace(/^[{]{1}|[}]{1}$/g, "")
-          );
-          let codeMap = objectToMap(codes.sources);
-          // 选择一个目录
-          vscode.window
-            .showOpenDialog(
-              fileDialogOptions(this.i18n.localize("tip.contract.selectfolder"))
-            )
-            .then((fileUri) => {
-              showSpinner(this.i18n.localize("tip.contract.savetofile"));
-              if (fileUri && fileUri[0]) {
-                // 获取要创建的目录
-                let path = fileUri[0].fsPath;
-                shell.cd(path);
-                codeMap.forEach((value: any, key: string) => {
-                  this.save(
-                    path,
-                    key,
-                    JSON.stringify(value.content).substring(
-                      1,
-                      JSON.stringify(value.content).length - 1
-                    )
-                  );
-                });
-                showInformationMessage(
-                  this.i18n.localize("tip.contract.savetofile.sucess")
+        res.data.result.forEach(async (element: any) => {
+          if (element.SourceCode.indexOf("{") === 0) {
+            // SourceCode 里面一个对象
+            // 我不知道为什么的他外面还有一层括号，所以我先用正则去掉了
+            let codes = JSON.parse(
+              element.SourceCode.replace(/^[{]{1}|[}]{1}$/g, "")
+            );
+            let codeMap = objectToMap(codes.sources);
+            this.selectFolder((selectPath: string) => {
+              shell.cd(selectPath);
+              codeMap.forEach((value: any, key: string) => {
+                this.save(
+                  selectPath,
+                  key,
+                  JSON.stringify(value.content).substring(
+                    1,
+                    JSON.stringify(value.content).length - 1
+                  )
                 );
-                clearSpinner();
-              }
+              });
+              this.saveSuccess();
             });
+          } else {
+            // SourceCode 里面是字符串
+            this.selectFolder((selectPath: string) => {
+              shell.cd(selectPath);
+              this.save(selectPath, "contract.sol", element.SourceCode);
+              this.saveSuccess();
+            });
+          }
         });
       })
       .catch((err) => {
-        clearSpinner();
-        this.output.appendLine(err.message);
-        showInformationMessage(
-          this.i18n.localize("err.contract.getinfo.failed")
-        );
+        this.onNetCatch(err);
       });
   }
 

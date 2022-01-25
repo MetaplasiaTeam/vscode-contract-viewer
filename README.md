@@ -2,13 +2,16 @@
 
 ![logo](image/logo.png)
 
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/Metaplasia.contract-viewer.svg)](https://marketplace.visualstudio.com/items?itemName=Metaplasia.contract-viewer)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs-short/Metaplasia.contract-viewer.svg)](https://marketplace.visualstudio.com/items?itemName=Metaplasia.contract-viewer)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating-star/Metaplasia.contract-viewer.svg)](https://marketplace.visualstudio.com/items?itemName=Metaplasia.contract-viewer#review-details)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 [English](docs/README-EN.md) | [中文](README.md)
 
-**Contract Viewer** 是一个 VS Code 扩展，他可以帮你从区块链浏览器下载合约代码，只需要一个合约地址即可下载。
+**Contract Viewer** 是一个 VS Code 扩展，他可以帮你从区块链浏览器下载合约代码，只需要一个合约地址即可下载，点击 [这里](#支持列表) 查看支持的合约。
 
-> 目前仅支持以太坊使用 `Solidity` 的智能合约，后续会支持更多类型。
+> 示例使用的是 `以太坊合约`，和他合约类型操作大同小异。
 
 ## 快速开始
 
@@ -32,7 +35,7 @@
     5. 选择一个**空目录**保存合约。
     6. 合约代码写入文件。
     ![下载合约](docs/image/get_contract.gif)
-    7. 完成！现在可以查看刚次下载的合约了。
+    7. 完成！现在可以查看刚才下载的合约了。
 
 ## 命令
 
@@ -52,3 +55,12 @@
 
 1. ***`contract-viewer.setting.api.eth`***
     以太坊 API 配置，如果没有配置 API 将无法下载合约。
+
+## 更新日志
+
+在 [这里](CHANGELOG.md) 查看
+
+## 支持列表
+
+以太坊合约: <https://etherscan.io/>  
+币安智能合约: <https://bscscan.com/>

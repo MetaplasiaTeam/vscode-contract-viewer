@@ -1,12 +1,14 @@
+import { BinanceParser } from "../contract/BinanceParser";
 import { EthereumParser } from "../contract/EthereumParser";
-import { EthereumParser2 } from "../contract/EthereumParser2";
 
 export class ContractParser {
   static parse(index: number, addr: string) {
     switch (index) {
       case ContractType.ethereum:
-        new EthereumParser2(addr).start();
+        new EthereumParser(addr).start();
         break;
+      case ContractType.binance:
+        new BinanceParser(addr).start();
       default:
         break;
     }
@@ -14,4 +16,5 @@ export class ContractParser {
 }
 enum ContractType {
   ethereum = 0,
+  binance = 1,
 }
