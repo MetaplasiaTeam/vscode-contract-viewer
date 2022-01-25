@@ -3,7 +3,6 @@ import * as shell from "shelljs";
 import * as fs from "fs";
 import { BaseParser } from "../common/BaseParser";
 import { EOL } from "os";
-import { openFile } from "../utils/vscode-api";
 
 export class BinanceParser extends BaseParser {
   constructor(addr: string) {
@@ -28,7 +27,22 @@ export class BinanceParser extends BaseParser {
         res.data.result.forEach(async (element: any) => {
           this.selectFolder((selectPath: string) => {
             shell.cd(selectPath);
-            this.save(selectPath, "contract.sol", element.SourceCode);
+            let code: string = element.SourceCode;
+            let codeArr: Array<string> = code.split("// File:");
+            codeArr.forEach((element) => {
+              let filePath = Date.now().toString();
+              if (element.startsWith("https://")) {
+                filePath =
+                  element.substring(
+                    element.search("master/"),
+                    element.search(".sol")
+                  ) + ".sol";
+              } else {
+                filePath =
+                  element.substring(0, element.search(".sol")) + ".sol";
+              }
+              this.save(selectPath, filePath + ".sol", "//" + element);
+            });
             this.saveSuccess();
           });
         });

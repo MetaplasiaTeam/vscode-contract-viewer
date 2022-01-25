@@ -53,8 +53,8 @@
 
 您可以在 `VS Code 用户设置`中找到以下 `Contract Viewer` 配置项。
 
-1. ***`contract-viewer.setting.api.eth`***
-    以太坊 API 配置，如果没有配置 API 将无法下载合约。
+1. ***`contract-viewer.setting.api.*`***
+    各类 API 配置，如果没有配置 API 将无法下载合约。
 
 ## 更新日志
 

@@ -53,8 +53,8 @@ Type `Contract Viewer` in `VS Code's command panel` to retrieve all commands of 
 
 You can find the following `Contract Viewer` configuration items in the `VS Code User Settings`.
 
-1. ***`contract-viewer.setting.api.eth`***
-    Ethernet API configuration, if you don't configure the API, you will not be able to download contracts.
+1. ***`contract-viewer.setting.api.*`***
+    Some API configuration, if you don't configure the API, you will not be able to download contracts.
 
 ## Change Log
 
