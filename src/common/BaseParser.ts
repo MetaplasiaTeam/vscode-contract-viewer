@@ -8,7 +8,7 @@ import {
   showInformationMessage,
   showSpinner,
 } from "../utils/toast";
-import { fileDialogOptions } from "../utils/vscode-api";
+import { fileDialogOptions, openDir, openFile } from "../utils/vscode-api";
 
 export abstract class BaseParser {
   protected output = Container.get(OutPut);
@@ -16,6 +16,7 @@ export abstract class BaseParser {
 
   private apiKey: string = this.initApiKey();
   private addr: string = "";
+  private path: string = "";
 
   constructor(addr: string) {
     this.addr = addr;
@@ -44,6 +45,7 @@ export abstract class BaseParser {
       fileDialogOptions(this.i18n.localize("tip.contract.selectfolder"))
     );
     if (fileUri && fileUri[0]) {
+      this.path = fileUri[0].fsPath;
       callback.call(this, fileUri[0].fsPath);
     }
   }
@@ -56,8 +58,13 @@ export abstract class BaseParser {
 
   protected saveSuccess() {
     showInformationMessage(
-      this.i18n.localize("tip.contract.savetofile.sucess")
-    );
+      this.i18n.localize("tip.contract.savetofile.sucess"),
+      this.i18n.localize("btn.openfolder")
+    ).then((value) => {
+      if (value === this.i18n.localize("btn.openfolder")) {
+        openDir(this.path);
+      }
+    });
     clearSpinner();
   }
 }

@@ -55,6 +55,15 @@ export function openFile(filepath: string) {
 }
 
 /**
+ * 用 VS Code 打开一个文件夹
+ * 
+ * @param dir 
+ */
+export function openDir(dir: string) {
+  vscode.commands.executeCommand("vscode.openFolder", vscode.Uri.file(dir));
+}
+
+/**
  * 重载 VS Code 窗口
  */
 export function reloadWindow() {

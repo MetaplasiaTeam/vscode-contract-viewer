@@ -10,5 +10,6 @@
   "tip.contract.selectfolder": "选择文件夹",
   "tip.contract.getinfo": "正在获取合约信息",
   "tip.contract.savetofile": "正在保存合约",
-  "tip.contract.savetofile.sucess": "保存合约成功"
+  "tip.contract.savetofile.sucess": "保存合约成功",
+  "btn.openfolder": "打开文件夹"
 }

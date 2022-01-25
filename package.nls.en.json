@@ -10,5 +10,6 @@
   "tip.contract.selectfolder": "Select a folder to save the contract code",
   "tip.contract.getinfo": "Get the contract information",
   "tip.contract.savetofile": "Save the contract code to file",
-  "tip.contract.savetofile.sucess": "Save the contract code to file successfully"
+  "tip.contract.savetofile.sucess": "Save the contract code to file successfully",
+  "btn.openfolder": "Open folder"
 }

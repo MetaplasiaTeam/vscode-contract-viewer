@@ -3,6 +3,7 @@ import * as shell from "shelljs";
 import * as fs from "fs";
 import { BaseParser } from "../common/BaseParser";
 import { EOL } from "os";
+import { openFile } from "../utils/vscode-api";
 
 export class BinanceParser extends BaseParser {
   constructor(addr: string) {
