@@ -11,7 +11,7 @@
 
 **Contract Viewer** is a VS Code extension that helps you download contract code from the blockchain viewer, just need a contract address to download, click [here](#SupportList) to see supported contracts.
 
-> The example uses `Ethiopia Contracts`, which operates much the same way as other contract types.
+> The example uses `Ethereum Contracts`, other contract types operate in much the same way.
 
 ## Quick start
 
