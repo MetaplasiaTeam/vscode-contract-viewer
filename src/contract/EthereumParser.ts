@@ -52,7 +52,22 @@ export class EthereumParser extends BaseParser {
             // SourceCode 里面是字符串
             this.selectFolder((selectPath: string) => {
               shell.cd(selectPath);
-              this.save(selectPath, "contract.sol", element.SourceCode);
+              let code: string = element.SourceCode;
+              let codeArr: Array<string> = code.split("// File:");
+              codeArr.forEach((element) => {
+                let filePath = Date.now().toString();
+                if (element.startsWith("https://")) {
+                  filePath =
+                    element.substring(
+                      element.search("master/"),
+                      element.search(".sol")
+                    ) + ".sol";
+                } else {
+                  filePath =
+                    element.substring(0, element.search(".sol")) + ".sol";
+                }
+                this.save(selectPath, filePath + ".sol", "//" + element);
+              });
               this.saveSuccess();
             });
           }
@@ -64,6 +79,9 @@ export class EthereumParser extends BaseParser {
   }
 
   async save(selectPath: string, file: string, content: string): Promise<void> {
+    if (content === "//") {
+      return;
+    }
     shell.cd(selectPath);
     let folder: string = file.substring(0, file.lastIndexOf("/"));
     shell.mkdir("-p", folder);
