@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.4 (2022-01-27)
+
+- Support download from Tampermonkey Script，see [here](https://github.com/MetaplasiaTeam/contract-viewer-ext)
+
 ## 0.0.3 (2022-01-25)
 
 - [#2](https://github.com/MetaplasiaTeam/vscode-contract-viewer/issues/2) Auto open folder after downloaded
