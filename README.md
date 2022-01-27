@@ -11,6 +11,8 @@
 
 **Contract Viewer** 是一个 VS Code 扩展，他可以帮你从区块链浏览器下载合约代码，只需要一个合约地址即可下载，点击 [这里](#支持列表) 查看支持的合约。
 
+支持从油猴脚本下载，点击 [这里](https://github.com/MetaplasiaTeam/contract-viewer-ext) 查看
+
 > 示例使用的是 `以太坊合约`，其他合约类型操作大同小异。
 
 ## 快速开始
@@ -54,7 +56,7 @@
 您可以在 `VS Code 用户设置`中找到以下 `Contract Viewer` 配置项。
 
 1. ***`contract-viewer.setting.api.*`***
-    各类 API 配置，如果没有配置 API 将无法下载合约。
+    各类 API 配置，如果没有配置 API 将无法下载合约。·
 
 ## 更新日志
 

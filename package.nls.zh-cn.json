@@ -8,6 +8,7 @@
   "err.invalidApi": "无效的 API",
   "err.contract.getinfo.failed": "获取合约信息失败",
   "tip.contract.selectfolder": "选择文件夹",
+  "tip.link.getinfo": "正在解析链接",
   "tip.contract.getinfo": "正在获取合约信息",
   "tip.contract.savetofile": "正在保存合约",
   "tip.contract.savetofile.sucess": "保存合约成功",

@@ -3,7 +3,7 @@
   "name": "contract-viewer",
   "displayName": "Contract Viewer",
   "description": "Contract Viewer",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "publisher": "Metaplasia",
   "repository": {
     "type": "git",
@@ -35,7 +35,8 @@
     "eth"
   ],
   "activationEvents": [
-    "*"
+    "*",
+    "onUri"
   ],
   "main": "./dist/extension.js",
   "contributes": {

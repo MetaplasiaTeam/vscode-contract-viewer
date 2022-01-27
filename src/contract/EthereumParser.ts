@@ -2,8 +2,7 @@ import axios from "axios";
 import * as shell from "shelljs";
 import * as fs from "fs";
 import { BaseParser } from "../common/BaseParser";
-import { objectToMap } from "./json";
-import { showInformationMessage, clearSpinner } from "../utils/toast";
+import { objectToMap } from "../utils/json";
 import { EOL } from "os";
 
 export class EthereumParser extends BaseParser {

@@ -5,6 +5,8 @@ import Container from "typedi";
 import { Localize } from "./common/Localize";
 import { Config } from "./core/config";
 import { ContractParser } from "./common/ContractParser";
+import { getDownloadParams, isMyUri } from "./uri";
+import { clearSpinner, statusInfo } from "./utils/toast";
 
 export class ViewerService {
   private static instance: ViewerService;
@@ -27,6 +29,7 @@ export class ViewerService {
 
   public static init(context: vscode.ExtensionContext) {
     ViewerService.create(context);
+    ViewerService.instance.initUri();
     ViewerService.instance.initViewer();
     ViewerService.instance.initCommands();
   }
@@ -37,6 +40,26 @@ export class ViewerService {
     } catch (err) {
       this.isReady = false;
     }
+  }
+
+  private initUri() {
+    vscode.window.registerUriHandler({
+      handleUri(uri: vscode.Uri) {
+        if (isMyUri(uri)) {
+          statusInfo(Container.get(Localize).localize("tip.link.getinfo"));
+          if (uri.path === "/download") {
+            const params = getDownloadParams(uri);
+            if (params.type === "eth") {
+              ContractParser.parse(0, params.addr);
+            }
+            if (params.type === "bsc") {
+              ContractParser.parse(1, params.addr);
+            }
+          }
+          clearSpinner();
+        }
+      },
+    });
   }
 
   /**
