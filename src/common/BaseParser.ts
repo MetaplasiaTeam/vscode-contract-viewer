@@ -1,14 +1,14 @@
 import * as vscode from "vscode";
 import { Container } from "typedi";
 import { Localize } from "../common/Localize";
-import { ConfigApi } from "../command/config-api";
+import { ConfigApi } from "./config-api";
 import { OutPut } from "../common/Output";
 import {
   clearSpinner,
   showInformationMessage,
   showSpinner,
 } from "../utils/toast";
-import { fileDialogOptions, openDir, openFile } from "../utils/vscode-api";
+import { fileDialogOptions, openDir } from "../utils/vscode-api";
 
 export abstract class BaseParser {
   protected output = Container.get(OutPut);

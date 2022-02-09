@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import { registerCommand } from "./utils/vscode-api";
-import { ConfigApi } from "./command/config-api";
+import { ConfigApi } from "./common/config-api";
 import Container from "typedi";
 import { Localize } from "./common/Localize";
 import { Config } from "./core/config";
@@ -13,8 +13,6 @@ export class ViewerService {
   private context: vscode.ExtensionContext;
   private i18n = Container.get(Localize);
   private config = Container.get(Config);
-  private isReady = false;
-  private channel = vscode.window.createOutputChannel("contract-viewer");
 
   private constructor(context: vscode.ExtensionContext) {
     this.context = context;
@@ -36,9 +34,7 @@ export class ViewerService {
 
   private initViewer() {
     try {
-      this.isReady = true;
     } catch (err) {
-      this.isReady = false;
     }
   }
 
