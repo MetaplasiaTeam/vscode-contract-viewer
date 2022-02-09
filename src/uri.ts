@@ -1,5 +1,4 @@
 import { Uri } from "vscode";
-import querystring = require("querystring");
 import { URLSearchParams } from "url";
 
 export interface DownloadUriParams {
