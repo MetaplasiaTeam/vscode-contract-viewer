@@ -59,6 +59,12 @@ export class BinanceParser extends BaseParser {
     shell.touch(file);
     let trueContent = content.replace(/\\n/g, EOL);
     trueContent = trueContent.replaceAll('\\"', '"');
-    fs.writeFileSync(file, trueContent);
+    fs.writeFile(file, trueContent, (err) => {
+      if (!err) {
+        this.output.appendLine(`${file} save success`);
+      } else {
+        this.output.appendLine(`${file} save failed`);
+      }
+    });
   }
 }
