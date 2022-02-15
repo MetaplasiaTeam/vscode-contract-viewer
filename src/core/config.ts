@@ -1,5 +1,5 @@
 import Container, { Service } from "typedi";
-import { Localize } from "../common/Localize";
+import { Localize } from "../common/localize";
 
 @Service()
 export class Config {

@@ -2,9 +2,9 @@ import * as vscode from "vscode";
 import { registerCommand } from "./utils/vscode-api";
 import { ConfigApi } from "./common/config-api";
 import Container from "typedi";
-import { Localize } from "./common/Localize";
+import { Localize } from "./common/localize";
 import { Config } from "./core/config";
-import { ContractParser } from "./common/ContractParser";
+import { ContractParser } from "./common/contract-parser";
 import { getDownloadParams, isMyUri } from "./uri";
 import { clearSpinner, statusInfo } from "./utils/toast";
 
