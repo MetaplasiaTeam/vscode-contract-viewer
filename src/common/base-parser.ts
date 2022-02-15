@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
 import { Container } from "typedi";
-import { Localize } from "../common/Localize";
+import { Localize } from "./localize";
 import { ConfigApi } from "./config-api";
-import { OutPut } from "../common/Output";
+import { OutPut } from "./output";
 import {
   clearSpinner,
   showInformationMessage,

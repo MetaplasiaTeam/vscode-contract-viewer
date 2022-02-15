@@ -1,5 +1,5 @@
-import { BinanceParser } from "../contract/BinanceParser";
-import { EthereumParser } from "../contract/EthereumParser";
+import { BinanceParser } from "../parsers/binance-parser";
+import { EthereumParser } from "../parsers/ethereum-parser";
 
 export class ContractParser {
   static parse(index: number, addr: string) {
