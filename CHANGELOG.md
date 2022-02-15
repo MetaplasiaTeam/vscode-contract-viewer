@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.5 (2022-02-15)
+
+- Fix multi-language display
+
 ## 0.0.4 (2022-01-27)
 
 - Support download from Tampermonkey Script，see [here](https://github.com/MetaplasiaTeam/contract-viewer-ext)
