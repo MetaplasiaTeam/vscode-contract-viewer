@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.6 (2022-3-8)
+
+- Fixed the unexpected analysis
+
 ## 0.0.5 (2022-02-15)
 
 - Fix multi-language display

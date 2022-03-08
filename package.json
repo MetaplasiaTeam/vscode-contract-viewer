@@ -3,7 +3,7 @@
   "name": "contract-viewer",
   "displayName": "Contract Viewer",
   "description": "Contract Viewer",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "Metaplasia",
   "repository": {
     "type": "git",
