@@ -47,7 +47,7 @@ export class EthereumParser extends BaseParser {
               });
               this.saveSuccess();
             });
-          } else {
+          } else if (element.SourceCode.startsWith("// File:")) {
             // SourceCode 里面是字符串
             this.selectFolder((selectPath: string) => {
               shell.cd(selectPath);
@@ -68,6 +68,11 @@ export class EthereumParser extends BaseParser {
                 this.save(selectPath, filePath + ".sol", "//" + element);
               });
               this.saveSuccess();
+            });
+          } else {
+            this.selectFolder((selectPath: string) => {
+              shell.cd(selectPath);
+              this.save(selectPath, "contract.sol", element.SourceCode);
             });
           }
         });
