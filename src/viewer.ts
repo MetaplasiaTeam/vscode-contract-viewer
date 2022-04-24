@@ -1,61 +1,60 @@
-import * as vscode from "vscode";
-import { registerCommand } from "./utils/vscode-api";
-import { ConfigApi } from "./common/config-api";
-import Container from "typedi";
-import { Localize } from "./common/localize";
-import { Config } from "./core/config";
-import { ContractParser } from "./common/contract-parser";
-import { getDownloadParams, isMyUri } from "./uri";
-import { clearSpinner, statusInfo } from "./utils/toast";
+import * as vscode from 'vscode'
+import { registerCommand } from './utils/vscode-api'
+import { ConfigApi } from './common/config-api'
+import Container from 'typedi'
+import { Localize } from './common/localize'
+import { Config } from './core/config'
+import { ContractParser } from './common/contract-parser'
+import { getDownloadParams, isMyUri } from './uri'
+import { clearSpinner, statusInfo } from './utils/toast'
 
 export class ViewerService {
-  private static instance: ViewerService;
-  private context: vscode.ExtensionContext;
-  private i18n = Container.get(Localize);
-  private config = Container.get(Config);
+  private static instance: ViewerService
+  private context: vscode.ExtensionContext
+  private i18n = Container.get(Localize)
+  private config = Container.get(Config)
 
   private constructor(context: vscode.ExtensionContext) {
-    this.context = context;
+    this.context = context
   }
 
   private static create(context: vscode.ExtensionContext) {
     if (!ViewerService.instance) {
-      ViewerService.instance = new ViewerService(context);
+      ViewerService.instance = new ViewerService(context)
     }
-    return ViewerService.instance;
+    return ViewerService.instance
   }
 
   public static init(context: vscode.ExtensionContext) {
-    ViewerService.create(context);
-    ViewerService.instance.initUri();
-    ViewerService.instance.initViewer();
-    ViewerService.instance.initCommands();
+    ViewerService.create(context)
+    ViewerService.instance.initUri()
+    ViewerService.instance.initViewer()
+    ViewerService.instance.initCommands()
   }
 
   private initViewer() {
     try {
-    } catch (err) {
-    }
+    } catch (err) {}
   }
 
   private initUri() {
     vscode.window.registerUriHandler({
       handleUri(uri: vscode.Uri) {
         if (isMyUri(uri)) {
-          statusInfo(Container.get(Localize).localize("tip.link.getinfo"));
-          if (uri.path === "/download") {
-            const params = getDownloadParams(uri);
-            if (params.type === "eth") {
-              ContractParser.parse(0, params.addr);
+          statusInfo(Container.get(Localize).localize('tip.link.getinfo'))
+          if (uri.path === '/download') {
+            const params = getDownloadParams(uri)
+            if (params.type === 'eth') {
+              ContractParser.parse(0, params.addr)
             }
-            if (params.type === "bsc") {
-              ContractParser.parse(1, params.addr);
+            if (params.type === 'bsc') {
+              ContractParser.parse(1, params.addr)
             }
           }
-          clearSpinner();
+          clearSpinner()
         }
       },
-    });
+    })
   }
 
   /**
@@ -64,28 +63,28 @@ export class ViewerService {
   private initCommands() {
     registerCommand(
       this.context,
-      "contract-viewer.configApi",
+      'contract-viewer.configApi',
       this.configApi.bind(this)
-    );
+    )
     registerCommand(
       this.context,
-      "contract-viewer.getContract",
+      'contract-viewer.getContract',
       this.getContract.bind(this)
-    );
+    )
   }
 
   /**
    * 配置 api
    */
   private configApi() {
-    ConfigApi.open();
+    ConfigApi.open()
   }
 
   /**
    * 获取合约
    */
   private getContract() {
-    this.selectType();
+    this.selectType()
   }
 
   /**
@@ -96,16 +95,16 @@ export class ViewerService {
       if (item !== undefined) {
         vscode.window
           .showInputBox({
-            prompt: this.i18n.localize("ext.input.hint.address"),
-            value: "",
+            prompt: this.i18n.localize('ext.input.hint.address'),
+            value: '',
             valueSelection: [0, 0],
           })
           .then((address) => {
-            if (address !== undefined && address !== "") {
-              ContractParser.parse(item.index, address);
+            if (address !== undefined && address !== '') {
+              ContractParser.parse(item.index, address)
             }
-          });
+          })
       }
-    });
+    })
   }
 }

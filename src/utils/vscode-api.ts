@@ -1,4 +1,4 @@
-import * as vscode from "vscode";
+import * as vscode from 'vscode'
 
 /**
  * 从 VS Code 设置里面获取配置
@@ -10,7 +10,7 @@ export function getVSCodeSetting<T>(
 ): T {
   return vscode.workspace
     .getConfiguration(section)
-    .get<T>(key, defaultValue as T);
+    .get<T>(key, defaultValue as T)
 }
 
 /**
@@ -19,19 +19,19 @@ export function getVSCodeSetting<T>(
 export function getJSONFormatOnSaveSetting(
   settingsJSON: any
 ): boolean | undefined {
-  let result: boolean | undefined;
-  const key = "editor.formatOnSave";
+  let result: boolean | undefined
+  const key = 'editor.formatOnSave'
   if (settingsJSON) {
-    result = settingsJSON["[json]"] && settingsJSON["[json]"][key];
+    result = settingsJSON['[json]'] && settingsJSON['[json]'][key]
     if (result === null) {
-      result = settingsJSON["[jsonc]"] && settingsJSON["[jsonc]"][key];
+      result = settingsJSON['[jsonc]'] && settingsJSON['[jsonc]'][key]
     }
 
     if (result === null) {
-      result = settingsJSON[key];
+      result = settingsJSON[key]
     }
   }
-  return result;
+  return result
 }
 
 /**
@@ -39,9 +39,9 @@ export function getJSONFormatOnSaveSetting(
  */
 export function getVSCodeLocale(): string | undefined {
   try {
-    return JSON.parse(process.env.VSCODE_NLS_CONFIG || "{}").locale;
+    return JSON.parse(process.env.VSCODE_NLS_CONFIG || '{}').locale
   } catch (err) {
-    return;
+    return
   }
 }
 
@@ -51,23 +51,23 @@ export function getVSCodeLocale(): string | undefined {
  * @param filepath 文件路径
  */
 export function openFile(filepath: string) {
-  vscode.commands.executeCommand("vscode.open", vscode.Uri.file(filepath));
+  vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filepath))
 }
 
 /**
  * 用 VS Code 打开一个文件夹
- * 
- * @param dir 
+ *
+ * @param dir
  */
 export function openDir(dir: string) {
-  vscode.commands.executeCommand("vscode.openFolder", vscode.Uri.file(dir));
+  vscode.commands.executeCommand('vscode.openFolder', vscode.Uri.file(dir))
 }
 
 /**
  * 重载 VS Code 窗口
  */
 export function reloadWindow() {
-  vscode.commands.executeCommand("workbench.action.reloadWindow");
+  vscode.commands.executeCommand('workbench.action.reloadWindow')
 }
 
 /**
@@ -78,9 +78,7 @@ export function registerCommand(
   command: string,
   callback: () => void
 ) {
-  context.subscriptions.push(
-    vscode.commands.registerCommand(command, callback)
-  );
+  context.subscriptions.push(vscode.commands.registerCommand(command, callback))
 }
 
 /**
@@ -94,5 +92,5 @@ export function fileDialogOptions(label: string): vscode.OpenDialogOptions {
     openLabel: label,
     canSelectFiles: false,
     canSelectFolders: true,
-  };
+  }
 }

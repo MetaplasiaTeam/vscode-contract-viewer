@@ -1,16 +1,16 @@
-import { BinanceParser } from "../parsers/binance-parser";
-import { EthereumParser } from "../parsers/ethereum-parser";
+import { BinanceParser } from '../parsers/binance-parser'
+import { EthereumParser } from '../parsers/ethereum-parser'
 
 export class ContractParser {
   static parse(index: number, addr: string) {
     switch (index) {
       case ContractType.ethereum:
-        new EthereumParser(addr).start();
-        break;
+        new EthereumParser(addr).start()
+        break
       case ContractType.binance:
-        new BinanceParser(addr).start();
+        new BinanceParser(addr).start()
       default:
-        break;
+        break
     }
   }
 }
