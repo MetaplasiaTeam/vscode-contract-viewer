@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.7 (2022-4-24)
+
+- Fix unexpected `\t` identifier
+
 ## 0.0.6 (2022-3-8)
 
 - Fixed the unexpected analysis
