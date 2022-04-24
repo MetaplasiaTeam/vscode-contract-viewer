@@ -91,6 +91,7 @@ export class EthereumParser extends BaseParser {
     shell.mkdir("-p", folder);
     shell.touch(file);
     let trueContent = content.replace(/\\n/g, EOL);
+    trueContent = trueContent.replace(/\\t/g, "\t");
     trueContent = trueContent.replaceAll('\\"', '"');
     fs.writeFile(file, trueContent, (err) => {
       if (!err) {
