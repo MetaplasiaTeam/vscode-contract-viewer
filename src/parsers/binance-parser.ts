@@ -27,8 +27,8 @@ export class BinanceParser extends BaseParser {
         res.data.result.forEach(async (element: any) => {
           this.selectFolder((selectPath: string) => {
             shell.cd(selectPath)
-            let code: string = element.SourceCode
-            let codeArr: Array<string> = code.split('// File:')
+            const code: string = element.SourceCode
+            const codeArr: Array<string> = code.split('// File:')
             codeArr.forEach((element) => {
               let filePath = Date.now().toString()
               if (element.startsWith('https://')) {
@@ -53,7 +53,7 @@ export class BinanceParser extends BaseParser {
 
   async save(selectPath: string, file: string, content: string): Promise<void> {
     shell.cd(selectPath)
-    let folder: string = file.substring(0, file.lastIndexOf('/'))
+    const folder: string = file.substring(0, file.lastIndexOf('/'))
     shell.mkdir('-p', folder)
     shell.touch(file)
     let trueContent = content.replace(/\\n/g, EOL)

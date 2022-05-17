@@ -29,10 +29,10 @@ export class EthereumParser extends BaseParser {
           if (element.SourceCode.indexOf('{') === 0) {
             // SourceCode 里面一个对象
             // 我不知道为什么的他外面还有一层括号，所以我先用正则去掉了
-            let codes = JSON.parse(
+            const codes = JSON.parse(
               element.SourceCode.replace(/^[{]{1}|[}]{1}$/g, '')
             )
-            let codeMap = objectToMap(codes.sources)
+            const codeMap = objectToMap(codes.sources)
             this.selectFolder((selectPath: string) => {
               shell.cd(selectPath)
               codeMap.forEach((value: any, key: string) => {
@@ -51,8 +51,8 @@ export class EthereumParser extends BaseParser {
             // SourceCode 里面是字符串
             this.selectFolder((selectPath: string) => {
               shell.cd(selectPath)
-              let code: string = element.SourceCode
-              let codeArr: Array<string> = code.split('// File:')
+              const code: string = element.SourceCode
+              const codeArr: Array<string> = code.split('// File:')
               codeArr.forEach((element) => {
                 let filePath = Date.now().toString()
                 if (element.startsWith('https://')) {
@@ -87,7 +87,7 @@ export class EthereumParser extends BaseParser {
       return
     }
     shell.cd(selectPath)
-    let folder: string = file.substring(0, file.lastIndexOf('/'))
+    const folder: string = file.substring(0, file.lastIndexOf('/'))
     shell.mkdir('-p', folder)
     shell.touch(file)
     let trueContent = content.replace(/\\n/g, EOL)

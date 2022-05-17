@@ -7,13 +7,14 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "@typescript-eslint/naming-convention": "warn",
-    "@typescript-eslint/semi": ["warn", "never"],
-    "curly": "warn",
-    "eqeqeq": "warn",
-    "no-throw-literal": "warn",
+    "@typescript-eslint/naming-convention": "error",
+    "@typescript-eslint/semi": ["error", "never"],
+    "curly": "error",
+    "eqeqeq": "error",
+    "no-throw-literal": "error",
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "prefer-const": "error"
   },
   "ignorePatterns": ["out", "dist", "**/*.d.ts"]
 }

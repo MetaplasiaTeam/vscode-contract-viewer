@@ -11,8 +11,8 @@ export function isMyUri(uri: Uri): boolean {
 }
 
 export function getDownloadParams(uri: Uri): DownloadUriParams {
-  let urlParams = new URLSearchParams(uri.query)
-  let obj = Object.fromEntries(urlParams)
+  const urlParams = new URLSearchParams(uri.query)
+  const obj = Object.fromEntries(urlParams)
   return {
     type: obj.type,
     addr: obj.addr,
