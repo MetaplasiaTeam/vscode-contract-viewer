@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.0.8 (2022-7-28)
+
+- Fix BSC Contract Parse
+
 ## 0.0.7 (2022-4-24)
 
 - Fix unexpected `\t` identifier
