@@ -27,7 +27,7 @@ export abstract class BaseParser {
   }
 
   checkApi() {
-    let api = ConfigApi.read(this.apiKey)
+    const api = ConfigApi.read(this.apiKey)
     if (api === null || api === undefined || api === '') {
       showInformationMessage(this.i18n.localize('err.invalidApi'))
       return
@@ -41,7 +41,7 @@ export abstract class BaseParser {
   protected abstract parse(api: string, addr: string): void
 
   protected async selectFolder(callback: Function) {
-    let fileUri = await vscode.window.showOpenDialog(
+    const fileUri = await vscode.window.showOpenDialog(
       fileDialogOptions(this.i18n.localize('tip.contract.selectfolder'))
     )
     if (fileUri && fileUri[0]) {
